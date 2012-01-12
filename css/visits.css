@@ -1,0 +1,32 @@
+body {
+  background-color: #232526;
+  color: #FFFFFF;
+}
+
+div#content {
+  background-color: #1B1D1E;
+  width: 800px;
+  height: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div#visits-panel {
+}
+
+div#right-panel {
+  float: right;
+  margin-right: 30px;
+}
+
+div#customers-list {
+  float: left;
+  width:200px;
+  margin-left: 30px;
+}
+
+div#customer-detail {
+  background-color: #2A2A2A;
+}
+
+

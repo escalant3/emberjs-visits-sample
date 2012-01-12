@@ -1,0 +1,79 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]--> <!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]--> <!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]--> <!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/visits.css"> 
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.6.1.min.js"%3E%3C/script%3E'))</script>
+  <script src="js/libs/ember-0.9.3.min.js"></script>
+
+  <div id="content">
+    <h1>Appointment Book Demo</h1>
+    <h3>Testing ember.js binding system</h3>
+    <hr/>
+    <div id="customers-list">
+      <h2>Customers</h2>
+      <script type="text/x-handlebars">
+        {{view Visits.CreateCustomerView id="new-todo" placeholder="Add new customers"}}
+
+        {{#collection Visits.CustomersView contentBinding="Visits.customerController" tagName="ul" class="ui-listview"}}
+          {{content.name}} 
+        {{/collection}}
+      </script>
+    </div>
+
+    <div id="right-panel">
+      <div id="visits-panel">
+        <script type="text/x-handlebars">
+          <h2>Next visits</h2>
+          {{#view Em.Button classBinding="isActive"
+              class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-a"
+              target="Visits.customerController"
+              action="clearDoneVisits"}}
+              Set marked visits as done
+          {{/view}}
+          {{view Visits.VisitsTodoView}}
+        </script>
+      </div>
+      <div id="customer-detail">
+        <h2>Detail</h2>
+        <script type="text/x-handlebars">
+          {{#view Visits.CustomerDetailView}}
+            <strong>Name:</strong> {{customer.name}}
+            <br/>
+            <strong>Next visit date:</strong>
+            {{view visitDate placeholder="Insert visit date"}}
+            <br/>
+            <strong>Next visit type:</strong>
+            {{view visitType placeholder="Insert visit type"}}
+            <br/>
+            <strong>Visit Log:</strong> TODO
+            {{ visitLog }}
+          {{/view}}
+        </script> 
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/fixtures.js"></script>
+</body>
+</html>
